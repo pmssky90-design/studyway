@@ -333,21 +333,19 @@
 
 /* Emphasis mobile CTA comparison; CTA-only overrides. */
 @media(max-width:767px){
-  body{padding-bottom:calc(98px + env(safe-area-inset-bottom,0px))}
-  .mobile-contact-cta--emphasis{bottom:max(8px,env(safe-area-inset-bottom,0px));min-height:72px;border:2px solid rgba(255,255,255,.92);border-radius:16px;background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.18)}
-  .mobile-contact-cta--emphasis a{gap:9px;min-height:72px;padding:9px 10px;color:#fff;white-space:normal}
+  body{padding-bottom:calc(90px + env(safe-area-inset-bottom,0px))}
+  .mobile-contact-cta--emphasis{bottom:max(8px,env(safe-area-inset-bottom,0px));min-height:64px;border:2px solid rgba(255,255,255,.92);border-radius:16px;background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.18)}
+  .mobile-contact-cta--emphasis a{gap:8px;min-height:60px;padding:6px 10px;color:#fff;white-space:normal}
   .mobile-contact-cta--emphasis .mobile-contact-cta__call{background:#146bd9;border-right:1px solid rgba(255,255,255,.38)}
   .mobile-contact-cta--emphasis .mobile-contact-cta__sms{background:#16b978}
-  .mobile-contact-cta__icon{display:flex;flex:0 0 36px;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.14)}
-  .mobile-contact-cta__icon svg{display:block;width:21px;height:21px;color:#fff;fill:currentColor}
-  .mobile-contact-cta__copy{display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:4px;white-space:nowrap}
-  .mobile-contact-cta__copy strong{font-size:1rem;font-weight:800;line-height:1}
-  .mobile-contact-cta__copy small{font-size:.78rem;font-weight:650;line-height:1;letter-spacing:-.01em}
+  .mobile-contact-cta__icon{display:flex;flex:0 0 32px;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.14)}
+  .mobile-contact-cta__icon svg{display:block;width:19px;height:19px;color:#fff;fill:currentColor}
+  .mobile-contact-cta__copy{display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:3px;white-space:nowrap}
+  .mobile-contact-cta__copy strong{font-size:.9375rem;font-weight:800;line-height:1}
+  .mobile-contact-cta__copy small{font-size:.74rem;font-weight:650;line-height:1;letter-spacing:-.01em}
 }
 @media(max-width:330px){
-  .mobile-contact-cta--emphasis a{gap:6px;padding:8px 6px}
-  .mobile-contact-cta__icon{flex-basis:32px;width:32px;height:32px}
-  .mobile-contact-cta__icon svg{width:19px;height:19px}
-  .mobile-contact-cta__copy strong{font-size:.94rem}
-  .mobile-contact-cta__copy small{font-size:.72rem}
+  .mobile-contact-cta--emphasis a{gap:6px;padding:6px}
+  .mobile-contact-cta__icon{flex-basis:30px;width:30px;height:30px}
+  .mobile-contact-cta__icon svg{width:18px;height:18px}
 }
