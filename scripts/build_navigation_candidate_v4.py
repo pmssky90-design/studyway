@@ -142,6 +142,10 @@ def main():
  body=f'<section id="regions"><h2>지역별 과외</h2>{region_html}</section><section id="schools"><h2>학교별 과외</h2>{school_html}</section>'
  file_for('/').write_text(build.layout('StudyWay | 서울·경기 과외 학습정보','서울·경기 과외 학습정보',BASE+'/',[('홈','/')],body).replace('href="/region/"','href="/#regions"').replace('href="/school/"','href="/#schools"'),encoding='utf-8')
 
+ home_path=file_for('/')
+ home_source=home_path.read_text(encoding='utf-8')
+ home_path.write_text(home_source.replace('</head>','<meta name="naver-site-verification" content="ce91a70b8eef9d987f80ba652997cf584b4564a3" /></head>',1),encoding='utf-8')
+
  # Sitemaps contain HOME plus unchanged content URLs only.
  for p in OUT.glob('sitemap*.xml'):p.unlink()
  urls=['/']+[r['url'] for r in rc+sc];xml='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{BASE+u}</loc></url>' for u in urls)+'</urlset>'
