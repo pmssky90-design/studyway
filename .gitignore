@@ -1,0 +1,15 @@
+candidate_output_*/
+reports/
+__pycache__/
+*.pyc
+*.log
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local validation and preview artifacts
+*screenshot*
+search_meta_inspector/
+
+# Source workbooks are not required in production
+*.xlsx
