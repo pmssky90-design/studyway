@@ -131,16 +131,24 @@ def main():
   if not any(d.iterdir()):d.rmdir()
 
  # HOME directly links top region base content and all 662 school base pages.
+ # The home region directory is for drilling down into child areas. Keep
+ # school-only areas in the school finder, but do not duplicate them here
+ # when they have no child region pages.
+ tops_with_children={top for _,top,_,local in hierarchy if local}
  reg=defaultdict(list)
  for top,row in sorted(top_base.items()):
-  if row:reg['서울' if '서울' in top_prov.get(top,'') else '경기'].append((top,row['url']))
+  if row and top in tops_with_children:
+   reg['서울' if '서울' in top_prov.get(top,'') else '경기'].append((top,row['url']))
  smeta={r['KEDI코드']:r for _,r in build.table_rows(book,'학교페이지대상')};sch=defaultdict(lambda:defaultdict(list))
  for code,h in school_hub_by_code.items():
   m=smeta[code];prov='서울' if m.get('시도')=='서울' else '경기';area=m.get('시군구','').removesuffix('시');sch[prov][area].append((h['school_name'],sbase[h['url']]['url']))
  region_html=''.join(f'<section><h3>{p}</h3><div class="link-grid">'+''.join(f'<a href="{u}">{html.escape(n)}</a>' for n,u in v)+'</div></section>' for p,v in reg.items())
  school_html=''.join(f'<section><h3>{p}</h3>'+''.join(f'<div class="school-area-card"><h4>{html.escape(a)}</h4><div class="link-grid">'+''.join(f'<a href="{u}">{html.escape(n)}</a>' for n,u in sorted(v))+'</div></div>' for a,v in sorted(areas.items()))+'</section>' for p,areas in sch.items())
  body=f'<section id="regions"><h2>지역별 과외</h2>{region_html}</section><section id="schools"><h2>학교별 과외</h2>{school_html}</section>'
- file_for('/').write_text(build.layout('StudyWay | 서울·경기 과외 학습정보','서울·경기 과외 학습정보',BASE+'/',[('홈','/')],body).replace('href="/region/"','href="/#regions"').replace('href="/school/"','href="/#schools"'),encoding='utf-8')
+ home_description='서울과 경기의 지역·학교별 영어 및 수학 과외 정보를 제공합니다. 학생의 학년, 과목, 학교와 생활권에 맞는 학습 정보를 찾아보세요.'
+ home_markup=build.layout('StudyWay | 서울·경기 과외 학습정보','서울·경기 과외 학습정보',BASE+'/',[('홈','/')],body).replace('href="/region/"','href="/#regions"').replace('href="/school/"','href="/#schools"')
+ home_markup=re.sub(r'<meta name="description" content="[^"]*">',f'<meta name="description" content="{html.escape(home_description)}">',home_markup,count=1)
+ file_for('/').write_text(home_markup,encoding='utf-8')
 
  home_path=file_for('/')
  home_source=home_path.read_text(encoding='utf-8')
