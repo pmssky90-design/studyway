@@ -31,6 +31,8 @@ def normalized(value: str) -> str:
 def title_for(source: str, relative_path: str) -> str:
     h1 = tag_text(source, "h1")
     old_title = tag_text(source, "title")
+    old_title = old_title.replace("지역 맞춤 학습 지역 맞춤 학습", "지역 맞춤 학습")
+    old_title = old_title.replace("학교별 학습 학교별 학습", "학교별 학습")
     if re.fullmatch(r".+ \| .*(?:지역 맞춤 학습|학교별 학습) \| StudyWay", old_title):
         return old_title
     parts = [part.strip() for part in old_title.split("|")]
