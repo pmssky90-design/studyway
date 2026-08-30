@@ -349,3 +349,34 @@
   .mobile-contact-cta__icon{flex-basis:30px;width:30px;height:30px}
   .mobile-contact-cta__icon svg{width:18px;height:18px}
 }
+
+/* SCHOOL_OFFICIAL_HOMEPAGE_START */
+.school-page-reference {
+  margin: 0 auto;
+  padding: 0 18px 22px;
+  max-width: 1040px;
+}
+.school-page-reference a {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 18px;
+  border: 1px solid rgba(24, 91, 78, .28);
+  border-radius: 14px;
+  background: #eef8f4;
+  color: #155a4c;
+  font-weight: 800;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+}
+.school-page-reference a:hover { border-color: #25816e; background: #e4f4ee; }
+.school-page-reference a:focus-visible { outline: 3px solid rgba(37, 129, 110, .28); outline-offset: 3px; }
+@media (max-width: 640px) {
+  .school-page-reference { padding: 0 12px 18px; }
+  .school-page-reference a { min-height: 50px; padding: 12px 14px; }
+}
+/* SCHOOL_OFFICIAL_HOMEPAGE_END */
