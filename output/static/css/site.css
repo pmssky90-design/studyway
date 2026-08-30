@@ -380,3 +380,42 @@
   .school-page-reference a { min-height: 50px; padding: 12px 14px; }
 }
 /* SCHOOL_OFFICIAL_HOMEPAGE_END */
+
+/* CORE_TOC_START */
+.core-toc {
+  box-sizing: border-box;
+  width: min(100% - 36px, 1040px);
+  margin: 0 auto 22px;
+  padding: 18px 20px;
+  border: 1px solid #dbe8e3;
+  border-radius: 16px;
+  background: #f6fbf9;
+}
+.core-toc__title { display: block; margin: 0 0 12px; color: #173f36; font-size: 1rem; }
+.core-toc ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: core-toc;
+}
+.core-toc li { counter-increment: core-toc; min-width: 0; }
+.core-toc a {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  color: #285a4e;
+  line-height: 1.5;
+  text-decoration: none;
+}
+.core-toc a::before { content: counter(core-toc, decimal-leading-zero); flex: 0 0 auto; color: #6b9087; font-size: .78rem; font-weight: 700; padding-top: .15rem; }
+.core-toc a:hover { color: #16705d; text-decoration: underline; text-underline-offset: 3px; }
+.core-toc a:focus-visible { outline: 3px solid rgba(37, 129, 110, .28); outline-offset: 3px; border-radius: 4px; }
+.content-body-card h2[id] { scroll-margin-top: 88px; }
+@media (max-width: 640px) {
+  .core-toc { width: calc(100% - 24px); margin-bottom: 18px; padding: 16px; border-radius: 14px; }
+  .core-toc ol { grid-template-columns: 1fr; gap: 7px; }
+}
+/* CORE_TOC_END */
